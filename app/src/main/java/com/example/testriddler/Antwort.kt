@@ -22,9 +22,7 @@ class Antwort : AppCompatActivity() {
         rg.orientation = RadioGroup.VERTICAL
         for (i in rdbtns.indices) {
             val rb = RadioButton(this)
-            do{
-                rb.text = antworts.random()
-            }while (rb.text == rb.text)
+            rb.text = antworts.random()
             rb.id = View.generateViewId()
             rb.setOnClickListener{
                 intent.putExtra("key2", rb.text)
