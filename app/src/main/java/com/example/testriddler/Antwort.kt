@@ -13,8 +13,6 @@ class Antwort : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.antwort)
-        lateinit var intentResult: Intent
-        intentResult = Intent(this, MainActivity::class.java)
         val btnantw: Button = findViewById(R.id.btnAnt)
 
 
@@ -24,10 +22,13 @@ class Antwort : AppCompatActivity() {
         rg.orientation = RadioGroup.VERTICAL
         for (i in rdbtns.indices) {
             val rb = RadioButton(this)
-            rb.text = antworts.random()
+            do{
+                rb.text = antworts.random()
+            }while (rb.text == rb.text)
             rb.id = View.generateViewId()
             rb.setOnClickListener{
-                intentResult.putExtra("Result", rb.text);
+                intent.putExtra("key2", rb.text)
+                setResult(RESULT_OK, intent)
                 btnantw.isEnabled = true
             }
             rg.addView(rb)
@@ -38,8 +39,7 @@ class Antwort : AppCompatActivity() {
     val antworts = listOf("Водопровод", "Граммофон", "Календарь", "Крапива", "Машины", "Сапоги", "Магнитофон", "Таракан", "Щетка", "Муравейник", "Наперсток", "Муха", "Паутина", "ладно текст.", "Троллейбус.")
 
     fun tomain(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        finish()
     }
 
 }
