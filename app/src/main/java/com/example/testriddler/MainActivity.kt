@@ -56,10 +56,11 @@ class MainActivity : AppCompatActivity() {
     var counter = 0
     var cor = 0
     var incor = 0
-
+    var quest = 0
 
     fun clickAtRiddle(view: View){
         riddleQuestions.text = riddles.random()
+        quest = riddles.indexOf(riddleQuestions.text)
         answer.setBackgroundColor(Color.WHITE)
         riddle.isEnabled = false
         activ.isEnabled = true
@@ -69,8 +70,10 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 100 && resultCode == RESULT_OK && data != null){
             var text = data.getStringExtra("key2")
-            answer.text = text
-            if (cor == incor){
+            var check = data.getStringExtra("key")
+            var ant = data.getStringExtra("ant")
+            answer.text = text +" "+ quest.toString()+ " " + check +" " + ant
+            if (check == quest.toString()){
                 cor++
                 answer.setBackgroundColor(Color.GREEN)
             }else{
@@ -91,6 +94,7 @@ class MainActivity : AppCompatActivity() {
 
     fun mainAct(view: View) {
         val i = Intent(this, Antwort::class.java)
+        intent.putExtra("indexofquest", quest.toString())
         startActivityForResult(i, 100)
     }
 }
