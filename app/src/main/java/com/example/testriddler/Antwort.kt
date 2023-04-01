@@ -11,13 +11,15 @@ import android.widget.TextView
 
 class Antwort : AppCompatActivity() {
 
-    val antworts = mutableListOf("Водопровод", "Граммофон", "Календарь", "Крапива", "Машины", "Сапоги", "Магнитофон", "Таракан", "Щетка", "Муравейник", "Наперсток", "Муха", "Паутина", "ладно текст.", "Троллейбус.")
+    val antworts = mutableListOf("Водопровод", "Граммофон", "Календарь",
+        "Крапива", "Машины", "Сапоги", "Магнитофон", "Таракан",
+        "Щетка", "Муравейник", "Наперсток", "Муха",
+        "Паутина", "ладно текст.", "Троллейбус.")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.antwort)
         val btnantw: Button = findViewById(R.id.btnAnt)
         var quest = intent.getStringExtra("indexofquest")
-        var ladnotext: TextView = findViewById(R.id.ladnotext)
         var info = antworts.get(quest!!.toInt())
         var count = 10
         var rand = antworts.shuffled()
@@ -46,7 +48,6 @@ class Antwort : AppCompatActivity() {
             }
         }
         main.addView(rg)
-        //ladnotext.text = info
 
     }
     fun tomain(view: View) {

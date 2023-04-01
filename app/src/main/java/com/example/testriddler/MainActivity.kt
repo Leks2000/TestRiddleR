@@ -8,11 +8,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isVisible
+import com.example.testriddler.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         riddle = findViewById(R.id.secatct)
         activ = findViewById(R.id.secondActivity)
         statistic = findViewById(R.id.statistic)
@@ -76,6 +80,8 @@ class MainActivity : AppCompatActivity() {
                 riddle.isEnabled = false
                 startbtn.isVisible = true
                 closepr.isVisible = true
+                binding.secondActivity.isVisible = false
+                binding.secatct.isVisible = false
                 answer.text = ""
                 riddleQuestions.text = ""
                 nonul.text = ""
