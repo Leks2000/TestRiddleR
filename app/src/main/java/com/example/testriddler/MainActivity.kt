@@ -8,23 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isVisible
-/*
-1-Водопровод
-2-Граммофон
-3-Календарь
-4-Крапива
-5-Машины
-6-Сапоги
-7-Магнитофон
-8-Таракан
-9-Щетка
-10-Муравейник
-11-Наперсток
-12-Муха
-13-Паутина
-14-ладно текст.
-15-Троллейбус.
-*/
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
