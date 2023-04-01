@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.example.testriddler.databinding.ActivityMainBinding
-import java.util.*
-
+import androidx.core.view.isVisible
 /*
 1-Водопровод
 2-Граммофон
@@ -28,15 +26,17 @@ import java.util.*
 15-Троллейбус.
 */
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         riddle = findViewById(R.id.secatct)
         activ = findViewById(R.id.secondActivity)
         statistic = findViewById(R.id.statistic)
+        startbtn = findViewById(R.id.Startrepeat)
+        closepr = findViewById(R.id.ClosePr)
         timetoResult = findViewById(R.id.yourAnswer)
+        nonul = findViewById(R.id.yourAnswer2)
+        tonull = findViewById(R.id.yourAnswer3)
         answer = findViewById(R.id.yourAnswer3)
         riddleQuestions = findViewById(R.id.riddleQuestions)
     }
@@ -50,7 +50,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var riddle: Button
     private lateinit var activ: Button
     private lateinit var answer: TextView
+    private lateinit var nonul: TextView
+    private lateinit var tonull: TextView
     private lateinit var statistic: Button
+    private lateinit var startbtn: Button
+    private lateinit var closepr: Button
     private lateinit var timetoResult: TextView
     private lateinit var riddleQuestions: TextView
     var counter = 0
@@ -71,8 +75,9 @@ class MainActivity : AppCompatActivity() {
         if(requestCode == 100 && resultCode == RESULT_OK && data != null){
             var text = data.getStringExtra("key2")
             var check = data.getStringExtra("key")
-            var ant = data.getStringExtra("ant")
-            answer.text = text +" "+ quest.toString()+ " " + check +" " + ant
+
+
+            answer.text = text
             if (check == quest.toString()){
                 cor++
                 answer.setBackgroundColor(Color.GREEN)
@@ -85,16 +90,34 @@ class MainActivity : AppCompatActivity() {
             if (counter == 10){
                 statistic.isEnabled = true
                 riddle.isEnabled = false
+                startbtn.isVisible = true
+                closepr.isVisible = true
+                answer.text = ""
+                riddleQuestions.text = ""
+                nonul.text = ""
+                tonull.text = ""
             }
             activ.isEnabled = false
             riddle.isEnabled = true
         }
     }
 
-
+    fun statistic(view: View){
+        val iin = Intent(this, gav::class.java)
+        iin.putExtra("cor", cor.toString())
+        iin.putExtra("incor", incor.toString())
+        startActivityForResult(iin, 100)
+    }
     fun mainAct(view: View) {
         val i = Intent(this, Antwort::class.java)
-        intent.putExtra("indexofquest", quest.toString())
+        i.putExtra("indexofquest", quest.toString())
         startActivityForResult(i, 100)
+    }
+    fun close(view: View){
+        finish()
+    }
+    fun reboot(view: View){
+        finish();
+        startActivity(getIntent())
     }
 }

@@ -74,6 +74,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="350dp"
         android:enabled="false"
+        android:onClick="statistic"
         android:text="Статистика"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +100,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ClosePr"
+        android:layout_width="237dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="250dp"
+        android:onClick="close"
+        android:text="Выход"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Startrepeat"
+        android:layout_width="237dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="400dp"
+        android:onClick="reboot"
+        android:text="Начать с начала"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
